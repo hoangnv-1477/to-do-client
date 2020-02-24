@@ -1,4 +1,3 @@
-
 export default {
   mode: 'spa',
   /*
@@ -34,12 +33,17 @@ export default {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxt/typescript-build'
   ],
+  bootstrapVue: {
+    icons: true // Install the IconsPlugin (in addition to BootStrapVue plugin
+  },
   /*
   ** Nuxt.js modules
   */
   modules: [
+    'bootstrap-vue/nuxt'
   ],
   /*
   ** Build configuration
@@ -48,6 +52,12 @@ export default {
     /*
     ** You can extend webpack config here
     */
+    babel: {
+      plugins: [
+        ["@babel/plugin-proposal-decorators", { legacy: true }],
+        ["@babel/plugin-proposal-class-properties", { loose: true }]
+      ]
+    },
     extend (config, ctx) {
     }
   }
